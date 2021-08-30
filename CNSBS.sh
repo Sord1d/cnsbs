@@ -11,7 +11,7 @@
 #config stuff
 #Enter path of private key
 private="path/to/private/"
-#Enter the server's ssh port
+#Enter the server's scp port
 port="22"
 #Enter server or user@server
 server="user@server.tld"
