@@ -7,3 +7,13 @@ How to use:
 3) Select a server
 
 Currently there's no option to back up everything, this will be implemented in a later version
+
+# CNSBS - V 2.0
+Currently in development. Will be most likely a rewrite in python3.
+
+Dependencies(So far):
+
+Python 3         _(sudo apt install python3)_
+Latest PIP       _(sudo python3 -m pip install -U pip)_
+Paramiko Module  _(pip3 install paramiko)_
+SCP Module       _(pip3 install scp)_
