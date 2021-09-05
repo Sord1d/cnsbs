@@ -55,7 +55,7 @@ read mode
 # case statement is used to compare one value with the multiple cases
 case $mode in
   # backup everything //To Do
-  1)    
+  #1)    
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -69,7 +69,7 @@ case $mode in
       echo "\e[1;92mMain server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
-      scp -i $private -P $port -r $server:'servers/main/worlds servers/event/worlds servers/creative/worlds servers/pandora/worlds servers/bentobox/worlds servers/museum/worlds' servers/
+      scp -i $private -P $port -r $server:'servers/' servers/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
       exit;;
