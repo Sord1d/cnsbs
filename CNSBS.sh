@@ -55,7 +55,7 @@ read mode
 # case statement is used to compare one value with the multiple cases
 case $mode in
   # backup everything //To Do
-  #1)    
+  1)    
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
