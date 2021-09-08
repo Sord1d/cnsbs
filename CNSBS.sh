@@ -69,6 +69,8 @@ case $mode in
       echo "\e[1;92mMain server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+      rm -r servers-old
+      mv servers/ servers-old
       scp -i $private -P $port -r $server:'servers/' servers/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
@@ -88,6 +90,8 @@ case $mode in
       echo "\e[1;92mMain server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+      rm -r main-old
+      mv main/ main-old
       scp -i $private -P $port -r $server:servers/main/worlds main/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
@@ -107,6 +111,8 @@ case $mode in
       echo "\e[1;92mCreative server selected\033[0m"
       echo "Trying to connect to server "
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+      rm -r creative-old
+      mv creative/ creative-old
       scp -i $private -P $port -r $server:servers/creative/worlds creative/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
@@ -126,6 +132,8 @@ case $mode in
       echo "\e[1;92mPandora server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+      rm -r pandora-old
+      mv pandora/ pandora-old
       scp -i $private -P $port -r $server:servers/pandora/worlds pandora/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
@@ -145,6 +153,8 @@ case $mode in
       echo "\e[1;92mIsland server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+      rm -r island-old
+      mv island/ island-old
       scp -i $private -P $port -r $server:servers/bentobox/worlds island/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
@@ -164,6 +174,8 @@ case $mode in
       echo "\e[1;92Museum server selected\033[0m"
       echo "Trying to connect to server"
       echo "Press ctrl + c to cancel\033[0m"
+      rm -r museum-old
+      mv museum/ museum-old
       scp -i $private -P $port -r $server:servers/museum/worlds museum/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
@@ -183,6 +195,8 @@ case $mode in
       echo "\e[1;92mEvent server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+      rm -r event-old
+      mv event/ event-old
       scp -i $private -P $port -r $server:servers/event/worlds event/
       echo "\e[1;92mOperation complete.\033[0m"
       echo "exiting..."
