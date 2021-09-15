@@ -17,7 +17,53 @@ port="22"
 server="user@server.tld"
 
 
+
 #code stuff
+
+#Loads datafile
+source DATA
+
+#Defines variavle with date
+time=`date`
+
+#Checks wether time variables are load from datafile
+#If not sets the variable to "never"
+
+if [ "$compl" = "" ]
+then
+compl="Never"
+fi
+
+if [ "$main" = "" ]
+then
+main="Never"
+fi
+
+if [ "$creative" = "" ]
+then
+creative="Never"
+fi
+
+if [ "$pandora" = "" ]
+then
+pandora="Never"
+fi
+
+if [ "$island" = "" ]
+then
+island="Never"
+fi
+
+if [ "$museum" = "" ]
+then
+museum="Never"
+fi
+
+if [ "$event" = "" ]
+then
+event="Never"
+fi
+
 #Display start menu
 clear
 echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
@@ -28,19 +74,19 @@ echo "\e[1;92m #       #   # #\033[0m       # #     #       # "
 echo "\e[1;92m #     # #    ##\033[0m #     # #     # #     # "
 echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
 echo "  \e[1;92mC\033[0mube-\e[1;92mN\033[0mation Simple Backup Script \e[1;92mV2.0-DEV\033[0m"
-echo "                                         "
+echo "                                                        "
 echo "Welcome to sord\e[1;92m1\033[0md's simple backup script."
 echo "This script will download all worlds from"
 echo "          the chosen server(s).          "
 echo "                                         "
-echo "      \e[1;92m [1] \033[0m Complete Backup (~N/A GB)      "
-echo "      \e[1;92m [2] \033[0m Main Server     (~N/A GB)      "
-echo "      \e[1;92m [3] \033[0m Creative        (~26  GB)      "
-echo "      \e[1;92m [4] \033[0m Pandora         (~N/A GB)      "
-echo "      \e[1;92m [5] \033[0m Island          (~N/A GB)      "
-echo "      \e[1;92m [6] \033[0m Museum          (~N/A GB)      "
-echo "      \e[1;92m [7] \033[0m Event           (~N/A GB)      "
-echo "      \e[1;92m [8] \033[0m Quit                           "
+echo "      \e[1;92m [1] \033[0m Complete Backup (~N/A GB)  -  $compl         "
+echo "      \e[1;92m [2] \033[0m Main Server     (~N/A GB)  -  $main          "
+echo "      \e[1;92m [3] \033[0m Creative        (~26  GB)  -  $creative      "
+echo "      \e[1;92m [4] \033[0m Pandora         (~N/A GB)  -  $pandora       "
+echo "      \e[1;92m [5] \033[0m Island          (~N/A GB)  -  $island        "
+echo "      \e[1;92m [6] \033[0m Museum          (~N/A GB)  -  $museum        "
+echo "      \e[1;92m [7] \033[0m Event           (~N/A GB)  -  $event         "
+echo "      \e[1;92m [8] \033[0m Quit                                         "
 
 
 
