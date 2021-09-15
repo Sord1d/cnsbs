@@ -20,18 +20,18 @@ server="user@server.tld"
 
 #code stuff
 
-#Loads datafile
-source DATA
-
-#Defines variavle with date
-time=`date`
+#Loads datafile if it exists
+if [ -f "DATA" ]
+then
+. ./DATA
+fi
 
 #Checks wether time variables are load from datafile
 #If not sets the variable to "never"
 
 if [ "$compl" = "" ]
 then
-compl="Never"
+compl='Never'
 fi
 
 if [ "$main" = "" ]
@@ -64,8 +64,9 @@ then
 event="Never"
 fi
 
+
 #Display start menu
-clear
+
 echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
 echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
 echo "\e[1;92m #       # #   #\033[0m #       #     # #       "
@@ -112,13 +113,24 @@ case $mode in
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "  \e[1;92mC\033[0mube-\e[1;92mN\033[0mation Simple Backup Script \e[1;92mCV2.0-DEV\033[0m"
       echo "                                         "
-      echo "\e[1;92mMain server selected\033[0m"
+      echo "\e[1;92mComplete server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
       rm -r servers-old
       mv servers/ servers-old
       scp -i $private -P $port -r $server:'servers/' servers/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      compl=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # backup main
@@ -140,6 +152,17 @@ case $mode in
       mv main/ main-old
       scp -i $private -P $port -r $server:servers/main/worlds main/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      main=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # backup creative
@@ -161,6 +184,17 @@ case $mode in
       mv creative/ creative-old
       scp -i $private -P $port -r $server:servers/creative/worlds creative/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      creative=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # backup pandora
@@ -182,6 +216,17 @@ case $mode in
       mv pandora/ pandora-old
       scp -i $private -P $port -r $server:servers/pandora/worlds pandora/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      pandora=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # backup island
@@ -203,6 +248,17 @@ case $mode in
       mv island/ island-old
       scp -i $private -P $port -r $server:servers/bentobox/worlds island/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      island=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # backup museum
@@ -224,6 +280,17 @@ case $mode in
       mv museum/ museum-old
       scp -i $private -P $port -r $server:servers/museum/worlds museum/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      museum=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # backup event
@@ -245,6 +312,17 @@ case $mode in
       mv event/ event-old
       scp -i $private -P $port -r $server:servers/event/worlds event/
       echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      #saving routine -> Removes savefile and writes new one
+      event=`date`
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
       echo "exiting..."
       exit;;
   # Exit
