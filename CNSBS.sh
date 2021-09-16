@@ -17,18 +17,24 @@ port="22"
 server="user@server.tld"
 
 
+
+
 #code stuff
 
 #Loads datafile if it exists
-if [ -f "DATA" ]
+clear
+echo "\e[1m[debug info]"
+if [ -f "modules/savefile" ]
 then
-. ./DATA
+. ./modules/savefile
+echo "\e[1;91msavefile found and loaded"
+else
+mkdir modules
+echo "\e[1;91mno savefile found"
 fi
 
 #Failsafe - If an old backup folder exists, but no current one, the old one will be copied
-echo "
-starting...
-checking backup-folder integrity - please stand by"
+echo "\033[0m\e[1mchecking backup-folder integrity - please stand by"
 
 if [ -d "main-old" ]
 then
@@ -85,7 +91,7 @@ then
  echo "\e[1;92mmuseum folder found"
  else
  echo "\e[1;91mmuseum folder missing, but museum-old was found - restoring..."
- cp -r main-old main
+ cp -r museum-old museum
  echo "\e[1;92mmuseum folder restored"
  fi
 fi
@@ -114,6 +120,8 @@ then
  fi
 fi
 
+#Wait three seconds for debug screen
+sleep 3.5
 #Checks whether the variables are empty. If they are they'll be set to "never"
 
 if [ "$main" = "" ]
@@ -150,7 +158,7 @@ fi
 
 
 #Display start menu
-
+clear
 echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
 echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
 echo "\e[1;92m #       # #   #\033[0m #       #     # #       "
@@ -226,14 +234,14 @@ case $mode in
       pandora=`date`
       island=`date`
 	  #starting saving routine for whatever reason
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup everything
@@ -258,14 +266,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       compl=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup main
@@ -290,14 +298,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       main=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup creative
@@ -322,14 +330,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       creative=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup pandora
@@ -354,14 +362,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       pandora=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup island
@@ -386,14 +394,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       island=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup museum
@@ -418,14 +426,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       museum=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # backup event
@@ -450,14 +458,14 @@ case $mode in
       echo "saving..."
       #saving routine -> Removes savefile and writes new one
       event=`date`
-      rm DATA
-      echo "compl='$compl'" >> DATA
-      echo "main='$main'" >> DATA
-      echo "creative='$creative'" >> DATA
-      echo "pandora='$pandora'" >> DATA
-      echo "island='$island'" >> DATA
-      echo "museum='$museum'" >> DATA
-      echo "event='$event'" >> DATA
+      rm modules/savefile
+      echo "compl='$compl'" >> modules/savefile
+      echo "main='$main'" >> modules/savefile
+      echo "creative='$creative'" >> modules/savefile
+      echo "pandora='$pandora'" >> modules/savefile
+      echo "island='$island'" >> modules/savefile
+      echo "museum='$museum'" >> modules/savefile
+      echo "event='$event'" >> modules/savefile
       echo "exiting..."
       exit;;
   # Exit
