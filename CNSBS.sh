@@ -209,15 +209,6 @@ case $mode in
       echo "\e[1;92mMain / Creative / Pandora / Island server selected\033[0m"
       echo "Trying to connect to server"
       echo "\e[0;92mPress ctrl + c to cancel\033[0m"
-#move and delete old backups
-      rm -r main-old
-      mv main/ main-old
-      rm -r creative-old
-      mv creative/ creative-old
-      rm -r pandora-old
-      mv pandora/ pandora-old
-      rm -r island-old
-      mv island/ island-old
 #Including SFTP Download script
       if [ -f "modules/sftp" ]
       then
