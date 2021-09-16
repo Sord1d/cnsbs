@@ -20,10 +20,10 @@ else
 echo "Trying to connect"
 fi
      sftp -i $private -P $port $server << EOF
-      get servers/creative/worlds creative/
-      get servers/pandora/worlds pandora/
-      get servers/island/worlds island/
-      get servers/main/worlds main/
+      get -r servers/creative/worlds creative/
+      get -r servers/pandora/worlds pandora/
+      get -r servers/island/worlds island/
+      get -r servers/main/worlds main/
       EOF
 
 
