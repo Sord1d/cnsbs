@@ -17,7 +17,6 @@ port="22"
 server="user@server.tld"
 
 
-
 #code stuff
 
 #Loads datafile if it exists
@@ -26,13 +25,96 @@ then
 . ./DATA
 fi
 
-#Checks wether time variables are load from datafile
-#If not sets the variable to "never"
+#Failsafe - If an old backup folder exists, but no current one, the old one will be copied
+echo "
+starting...
+checking backup-folder integrity - please stand by"
 
-if [ "$compl" = "" ]
+if [ -d "main-old" ]
 then
-compl='Never'
+ if [ -d "main" ]
+ then
+ echo "\e[1;92mmain folder found"
+ else
+ echo "\e[1;91mmain folder missing, but main-old was found - restoring..."
+ cp -r main-old main
+ echo "\e[1;92mmain folder restored"
+ fi
 fi
+
+if [ -d "creative-old" ]
+then
+ if [ -d "creative" ]
+ then
+ echo "\e[1;92mcreative folder found"
+ else
+ echo "\e[1;91mcreative folder missing, but creative-old was found - restoring..."
+ cp -r creative-old creative
+ echo "\e[1;92mcreative folder restored"
+ fi
+fi
+ 
+if [ -d "pandora-old" ]
+then
+ if [ -d "pandora" ]
+ then
+ echo "\e[1;92mpandora folder found"
+ else
+ echo "\e[1;91mpandora folder missing, but pandora-old was found - restoring..."
+ cp -r pandora-old pandora
+ echo "\e[1;92mpadora folder restored"
+ fi
+fi
+
+if [ -d "island-old" ]
+then
+ if [ -d "island" ]
+ then
+ echo "\e[1;92misland folder found"
+ else
+ echo "\e[1;91misland folder missing, but island-old was found - restoring..."
+ cp -r island-old island
+ echo "\e[1;92misland folder restored"
+ fi
+fi
+
+if [ -d "museum-old" ]
+then
+ if [ -d "museum" ]
+ then
+ echo "\e[1;92mmuseum folder found"
+ else
+ echo "\e[1;91mmuseum folder missing, but museum-old was found - restoring..."
+ cp -r main-old main
+ echo "\e[1;92mmuseum folder restored"
+ fi
+fi
+
+if [ -d "event-old" ]
+then
+ if [ -d "event" ]
+ then
+ echo "\e[1;92mpandora folder found"
+ else
+ echo "\e[1;91mpandora folder missing, but pandora-old was found - restoring..."
+ cp -r event-old event
+ echo "\e[1;92mevent folder restored"
+ fi
+fi
+
+if [ -d "servers-old" ]
+then
+ if [ -d "servers" ]
+ then
+ echo "\e[1;92mservers folder found"
+ else
+ echo "\e[1;91mservers folder missing, but servers-old was found - restoring..."
+ cp -r servers-old servers
+ echo "\e[1;92mservers folder restored"
+ fi
+fi
+
+#Checks whether the variables are empty. If they are they'll be set to "never"
 
 if [ "$main" = "" ]
 then
@@ -65,6 +147,8 @@ event="Never"
 fi
 
 
+
+
 #Display start menu
 
 echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
@@ -80,15 +164,16 @@ echo "Welcome to sord\e[1;92m1\033[0md's simple backup script."
 echo "This script will download all worlds from"
 echo "          the chosen server(s).          "
 echo "                                         "
-echo "      \e[1;92m [1] \033[0m Complete Backup (~N/A GB)  -  $compl         "
-echo "      \e[1;92m [2] \033[0m Main Server     (~N/A GB)  -  $main          "
-echo "      \e[1;92m [3] \033[0m Creative        (~26  GB)  -  $creative      "
-echo "      \e[1;92m [4] \033[0m Pandora         (~N/A GB)  -  $pandora       "
-echo "      \e[1;92m [5] \033[0m Island          (~N/A GB)  -  $island        "
-echo "      \e[1;92m [6] \033[0m Museum          (~N/A GB)  -  $museum        "
-echo "      \e[1;92m [7] \033[0m Event           (~N/A GB)  -  $event         "
-echo "      \e[1;92m [8] \033[0m Quit                                         "
-
+echo "      \e[1;92m [1] \033[0m Options 3 - 6   (~N/A GB)  "
+echo "      \e[1;92m [2] \033[0m Complete Backup (~N/A GB)  -  $compl         "
+echo "      \e[1;92m [3] \033[0m Main Server     (~N/A GB)  -  $main          "
+echo "      \e[1;92m [4] \033[0m Creative        (~26  GB)  -  $creative      "
+echo "      \e[1;92m [5] \033[0m Pandora         (~N/A GB)  -  $pandora       "
+echo "      \e[1;92m [6] \033[0m Island          (~N/A GB)  -  $island        "
+echo "      \e[1;92m [7] \033[0m Museum          (~N/A GB)  -  $museum        "
+echo "      \e[1;92m [8] \033[0m Event           (~N/A GB)  -  $event         "
+echo "      \e[1;92m [9] \033[0m Quit                                         "
+echo " Space on drive: $free out of $disk2" 
 
 
 # Running loop until option is selected
@@ -101,8 +186,58 @@ read mode
 
 # case statement is used to compare one value with the multiple cases
 case $mode in
-  # backup everything //To Do
-  1)    
+  #backup the servers with user worlds
+  1)
+      clear
+      echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
+      echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
+      echo "\e[1;92m #       # #   #\033[0m #       #     # #       "
+      echo "\e[1;92m #       #  #  #\033[0m  #####  ######   #####  "
+      echo "\e[1;92m #       #   # #\033[0m       # #     #       # "
+      echo "\e[1;92m #     # #    ##\033[0m #     # #     # #     # "
+      echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
+      echo "  \e[1;92mC\033[0mube-\e[1;92mN\033[0mation Simple Backup Script \e[1;92mCV2.0-DEV\033[0m"
+      echo "                                         "
+      echo "\e[1;92mMain / Creative / Pandora / Island server selected\033[0m"
+      echo "Trying to connect to server"
+      echo "\e[0;92mPress ctrl + c to cancel\033[0m"
+#move and delete old backups
+      rm -r main-old
+      mv main/ main-old
+      rm -r creative-old
+      mv creative/ creative-old
+      rm -r pandora-old
+      mv pandora/ pandora-old
+      rm -r island-old
+      mv island/ island-old
+#Including SFTP Download script
+      if [ -f "modules/sftp" ]
+      then
+      . ./modules/sftp
+      else
+      echo "This module is not installed. You can download it here:"
+      echo "https://github.com/sord1d/cnsbs"
+      exit
+      fi
+      echo "\e[1;92mOperation complete.\033[0m"
+      echo "saving..."
+      main=`date`
+      creative=`date`
+      pandora=`date`
+      island=`date`
+	  #starting saving routine for whatever reason
+      rm DATA
+      echo "compl='$compl'" >> DATA
+      echo "main='$main'" >> DATA
+      echo "creative='$creative'" >> DATA
+      echo "pandora='$pandora'" >> DATA
+      echo "island='$island'" >> DATA
+      echo "museum='$museum'" >> DATA
+      echo "event='$event'" >> DATA
+      echo "exiting..."
+      exit;;
+  # backup everything
+  2)    
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -134,7 +269,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # backup main
-  2)  
+  3)  
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -166,7 +301,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # backup creative
-  3)  
+  4)  
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -198,7 +333,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # backup pandora
-  4) 
+  5) 
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -230,7 +365,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # backup island
-  5) 
+  6) 
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -262,7 +397,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # backup museum
-  6)  
+  7)  
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -294,7 +429,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # backup event
-  7)  
+  8)  
       clear
       echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
       echo "\e[1;92m #     # ##    #\033[0m #     # #     # #     # "
@@ -326,7 +461,7 @@ case $mode in
       echo "exiting..."
       exit;;
   # Exit
-  8)  echo "Terminating..."
+  9)  echo "Terminating..."
       exit;;
   # Default Pattern
   *) echo "invalid option";;
