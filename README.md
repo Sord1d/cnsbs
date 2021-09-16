@@ -6,4 +6,6 @@ How to use:
 2) Run the script with either ./CNSBS.sh or sh CNSBS.sh
 3) Select a server
 
+The sftp module has been created to download the most important servers with just one click.
+Just put it into the modules directory
 
