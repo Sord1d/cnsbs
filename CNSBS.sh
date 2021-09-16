@@ -172,7 +172,6 @@ echo "                                         "
       echo "      \e[37m [1] [0m Options 3 - 6   (~N/A GB)  - Not installed"
       else
       echo "      \e[1;92m [1] \033[0m Options 3 - 6   (~N/A GB)  "
-      exit
       fi
 echo "      \e[1;92m [2] \033[0m Complete Backup (~N/A GB)  -  $compl         "
 echo "      \e[1;92m [3] \033[0m Main Server     (~N/A GB)  -  $main          "
@@ -211,6 +210,7 @@ case $mode in
 #Including SFTP Download script
       if [ -f "modules/sftp" ]
       then
+      program=1
       . ./modules/sftp
       else
       echo "\e[1;91mThis module is not installed. You can download it here:"
