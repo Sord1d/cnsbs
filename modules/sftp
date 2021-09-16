@@ -1,0 +1,29 @@
+#!/bin/sh
+
+  #####  #     #  #####  ######   #####  
+ #     # ##    # #     # #     # #     # 
+ #       # #   # #       #     # #       
+ #       #  #  #  #####  ######   #####  
+ #       #   # #       # #     #       # 
+ #     # #    ## #     # #     # #     # 
+  #####  #     #  #####  ######   #####  
+#sftp module
+#https://github.com/sord1d/cnsbs/
+
+
+if [ "$program" = "" ]
+then
+echo "\e[1;91mcrtitical error. program variable not found."
+echo "\e[1;91mthis module cannot be executed by the shell"
+exit
+else
+echo "Trying to connect"
+fi
+     sftp -i $private -P $port $server << EOF
+      get servers/creative/worlds creative/
+      get servers/pandora/worlds pandora/
+      get servers/island/worlds island/
+      get servers/main/worlds main/
+      EOF
+
+
