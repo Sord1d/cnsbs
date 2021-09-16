@@ -19,6 +19,15 @@ exit
 else
 echo "Trying to connect"
 fi
+      rm -r main-old
+      mv main/ main-old
+      rm -r creative-old
+      mv creative/ creative-old
+      rm -r pandora-old
+      mv pandora/ pandora-old
+      rm -r island-old
+      mv island/ island-old
+      
      sftp -i $private -P $port $server << EOF
       get -r servers/creative/worlds creative/
       get -r servers/pandora/worlds pandora/
