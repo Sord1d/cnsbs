@@ -17,8 +17,6 @@ port="22"
 server="user@server.tld"
 
 
-
-
 #code stuff
 
 #Loads datafile if it exists
@@ -27,7 +25,7 @@ echo "\e[1m[debug info]"
 if [ -f "modules/savefile" ]
 then
 . ./modules/savefile
-echo "\e[1;91msavefile found and loaded"
+echo "\e[1;92msavefile found and loaded"
 else
 mkdir modules
 echo "\e[1;91mno savefile found"
@@ -100,9 +98,9 @@ if [ -d "event-old" ]
 then
  if [ -d "event" ]
  then
- echo "\e[1;92mpandora folder found"
+ echo "\e[1;92mevent folder found"
  else
- echo "\e[1;91mpandora folder missing, but pandora-old was found - restoring..."
+ echo "\e[1;91mevent folder missing, but pandora-old was found - restoring..."
  cp -r event-old event
  echo "\e[1;92mevent folder restored"
  fi
@@ -154,9 +152,6 @@ then
 event="Never"
 fi
 
-
-
-
 #Display start menu
 clear
 echo "\e[1;92m  #####  #     #\033[0m  #####  ######   #####  "
@@ -172,7 +167,13 @@ echo "Welcome to sord\e[1;92m1\033[0md's simple backup script."
 echo "This script will download all worlds from"
 echo "          the chosen server(s).          "
 echo "                                         "
-echo "      \e[1;92m [1] \033[0m Options 3 - 6   (~N/A GB)  "
+      if ! [ -f "modules/sftp" ]
+      then
+      echo "      \e[37m [1] [0m Options 3 - 6   (~N/A GB)  - Not installed"
+      else
+      echo "      \e[1;92m [1] \033[0m Options 3 - 6   (~N/A GB)  "
+      exit
+      fi
 echo "      \e[1;92m [2] \033[0m Complete Backup (~N/A GB)  -  $compl         "
 echo "      \e[1;92m [3] \033[0m Main Server     (~N/A GB)  -  $main          "
 echo "      \e[1;92m [4] \033[0m Creative        (~26  GB)  -  $creative      "
@@ -183,11 +184,9 @@ echo "      \e[1;92m [8] \033[0m Event           (~N/A GB)  -  $event         "
 echo "      \e[1;92m [9] \033[0m Quit                                         "
 echo " Space on drive: $free out of $disk2" 
 
-
 # Running loop until option is selected
 while :
 do
-
 
 # reading choice
 read mode
@@ -214,8 +213,8 @@ case $mode in
       then
       . ./modules/sftp
       else
-      echo "This module is not installed. You can download it here:"
-      echo "https://github.com/sord1d/cnsbs"
+      echo "\e[1;91mThis module is not installed. You can download it here:"
+      echo "\e[1;91mhttps://github.com/sord1d/cnsbs"
       exit
       fi
       echo "\e[1;92mOperation complete.\033[0m"
