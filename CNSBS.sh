@@ -528,7 +528,7 @@ FunctionDoUpdate(){
 	mv -f cnsbs/modules/sftp modules/sftp
 	rm -r -f cnsbs
 	echo ""
-	echo -n "\e[!;92mUpdate complete. Please restart the script with \033[0m ./CNSBS.sh"
+	echo -n "\e[1;92mUpdate complete. Please restart the script with \033[0m ./CNSBS.sh"
 	echo ""
 	
 	exit
