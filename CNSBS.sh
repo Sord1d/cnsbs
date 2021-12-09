@@ -10,9 +10,11 @@
 
 
 FunctionStartup(){
-	#Loads datafile if it exists
+
 	clear
+	
 	FunctionLoadConfig
+	
 	echo "\e[1m[debug info]"
 
 	if [ -f "modules/savefile" ]
@@ -115,10 +117,7 @@ FunctionStartup(){
 	#Wait three seconds for debug screen
 	sleep 3.5
 
-
-
 	#Checks whether the variables are empty. If they are they'll be set to "never"
-
 	if [ "$main" = "" ]
 	then
 		main="Never"
@@ -154,6 +153,7 @@ FunctionStartup(){
 		compl="Never"
 	fi
 	
+	#Open the main menu
 	FunctionMainMenu
 }
 
@@ -184,7 +184,9 @@ FunctionLoadConfig(){
 
 
 FunctionASCII(){
+
 	clear
+	
 	echo "\e[1;92m ▄▄▄▄▄▄▄ ▄▄    ▄ \033[0m▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄    ▄▄   ▄▄    ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄ "
 	echo "\e[1;92m█       █  █  █ █\033[0m       █  ▄    █       █  █  █ █  █  █       █    █  ▄    █" 
 	echo "\e[1;92m█       █   █▄█ █\033[0m  ▄▄▄▄▄█ █▄█   █  ▄▄▄▄▄█  █  █▄█  █  █▄▄▄▄   █    █ █ █   █"
@@ -211,7 +213,7 @@ FunctionCheckSFTP(){
 
 
 FunctionSave(){
-	  #starting saving routine for whatever reason
+
 	echo "saving..."
 	rm modules/savefile
 	echo "compl='$compl'" >> modules/savefile
@@ -229,7 +231,7 @@ FunctionSave(){
 
 
 FunctionMainMenu(){
-	#Display start menu
+	
 	FunctionASCII
 	echo "                 Welcome to sord\e[1;92m1\033[0md's simple backup script."
 	echo "                 This script will download all worlds from"
@@ -255,7 +257,6 @@ FunctionMainMenu(){
 
 	# case statement is used to compare one value with the multiple cases
 	case $mode in
-	#backup the servers with user worlds
 		1)
 			Function3To6;;
 		2)
@@ -363,7 +364,6 @@ FunctionMain(){
 
 
 FunctionCreative(){
-  # backup creative
 	
 	FunctionASCII
 	
@@ -387,7 +387,6 @@ FunctionCreative(){
 
 
 FunctionPandora(){
-
 
 	FunctionASCII
 	
