@@ -487,6 +487,11 @@ FunctionUpdate(){
 	
 	echo " "
 	echo "\e[1;92mUpdater\033[0m"
+	echo ""
+	echo "\e[1;91mWARNING! This requires the package 'git' to be installed!"
+	echo "Otherwise the script will brake! If you're not sure if 'git' is"
+	echo "installed, select [N]o and check!"
+	echo ""
 	echo "Welcome to the CNSBS Updater. This will grab the latest\033[0m"
 	echo "script from Github. A backup of the current version will be made. "
 	echo "Do you want to continue [Y] [N]? "
