@@ -527,8 +527,8 @@ FunctionDoUpdate(){
 	mv -f cnsbs/CNSBS.sh CNSBS.sh
 	mv -f cnsbs/modules/sftp modules/sftp
 	rm -r -f cnsbs
-	
-	echo -n "\e[0;92mUpdate complete. Please restart the script with \033[0m ./CNSBS.sh"
+	echo ""
+	echo -n "\e[!;92mUpdate complete. Please restart the script with \033[0m ./CNSBS.sh"
 	echo ""
 	
 	exit
