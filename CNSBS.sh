@@ -23,6 +23,7 @@ FunctionStartup(){
 		echo "\e[1;92msavefile found and loaded"
 	else
 		if ! [ -d "modules"]
+		then
 			mkdir modules
 		fi
 		echo "\e[1;91mno savefile found"
