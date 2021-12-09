@@ -492,7 +492,7 @@ FunctionUpdate(){
 	echo "Otherwise the script will brake! If you're not sure if 'git' is"
 	echo "installed, select [N]o and check!"
 	echo ""
-	echo "Welcome to the CNSBS Updater. This will grab the latest\033[0m"
+	echo "\033[0mWelcome to the CNSBS Updater. This will grab the latest"
 	echo "script from Github. A backup of the current version will be made. "
 	echo "Do you want to continue [Y] [N]? "
 	
