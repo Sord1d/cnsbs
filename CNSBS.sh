@@ -248,7 +248,7 @@ FunctionMainMenu(){
 	echo "   \e[1;92m [7] \033[0m Museum          (~N/A GB)  -  $museum        "
 	echo "   \e[1;92m [8] \033[0m Event           (~N/A GB)  -  $event         "
 	echo "   \e[1;92m [9] \033[0m Quit                                         "
-	echo " Space on drive: $free out of $disk2" 
+	echo "   \e[1;92m [0] \033[0m Update script                                "
 	
 	# Running loop until option is selected
 	while :
@@ -259,6 +259,8 @@ FunctionMainMenu(){
 
 	# case statement is used to compare one value with the multiple cases
 	case $mode in
+		0) 
+			FunctionUpdate;;
 		1)
 			Function3To6;;
 		2)
@@ -476,6 +478,56 @@ FunctionEvent(){
 
 	FunctionSave
 	
+}
+
+FunctionUpdate(){
+	
+	FunctionASCII
+	
+	echo " "
+	echo "\e[1;92mUpdater\033[0m"
+	echo "Welcome to the CNSBS Updater. This will grab the latest\033[0m"
+	echo "script from Github. A backup of the current version will be made. "
+	echo "Do you want to continue [Y] [N]? "
+	
+	while :
+	do
+	read choice
+	
+	case $choice in
+	
+		N)
+			FunctionMainMenu;;
+		n)
+  			FunctionMainMenu;;
+		Y)
+     			FunctionDoUpdate;;
+		y)
+			FunctionDoUpdate;;
+		
+	esac
+		echo -n "Please enter valid choice: "
+	done
+	
+	
+}
+
+FunctionDoUpdate(){
+
+	mv CNSBS.sh CNSBS.sh.old
+	
+	git clone https://github.com/Sord1d/cnsbs
+	
+	mv -f cnsbs/CNSBS.sh CNSBS.sh
+	mv -f cnsbs/modules/sftp modules/sftp
+	rm -r -f cnsbs
+	
+	echo -n "\e[0;92mUpdate complete. Please restart the script with \033[0m ./CNSBS.sh"
+	echo ""
+	
+	exit
+	
+
 }
 
 FunctionStartup
