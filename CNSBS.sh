@@ -8,21 +8,11 @@
  #     # #    ## #     # #     # #     # 
   #####  #     #  #####  ######   #####  
 
-#config stuff
-#Enter path of private key
-private="path/to/private/"
-#Enter the server's scp port
-port="22"
-#Enter server or user@server
-server="user@server.tld"
-
-
-#code stuff
-
 
 FunctionStartup(){
 	#Loads datafile if it exists
 	clear
+	FunctionLoadConfig
 	echo "\e[1m[debug info]"
 
 	if [ -f "modules/savefile" ]
@@ -168,6 +158,31 @@ FunctionStartup(){
 }
 
 
+FunctionLoadConfig(){
+
+	if [ -f "modules/config" ]
+	then
+		. ./modules/config
+		echo "\e[1;92mConfig file loaded..."
+	else
+		echo "\e[1;91mERROR! Config file not found. Please check modules/config!"
+		echo "Exiting..."
+		exit
+	fi
+	
+	if [ "$server" = "user@server.tld" ]
+	then
+		echo "\e[1;91mERROR! Config file not adjusted. Please check modules/config!"
+		echo "Exiting..."
+		exit
+	fi
+	
+	
+}
+
+
+
+
 FunctionASCII(){
 	clear
 	echo "\e[1;92m ▄▄▄▄▄▄▄ ▄▄    ▄ \033[0m▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄    ▄▄   ▄▄    ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄ "
@@ -191,6 +206,7 @@ FunctionCheckSFTP(){
 	else
 		echo "   \e[1;92m [1] \033[0m Options 3 - 6   (~N/A GB)  "
 	fi
+
 }
 
 
