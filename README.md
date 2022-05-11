@@ -1,5 +1,5 @@
-# CNSBS - The Cube Nation Simple Backup Script
-This script was written to comfortably create backups of the cube-nation servers.
+# CNSBS
+This script was written to comfortably create backups.
 
 How to use:
 
